@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_111106) do
+ActiveRecord::Schema.define(version: 2019_01_16_112110) do
+
+  create_table "films_personnels", id: false, force: :cascade do |t|
+    t.integer "film_id", null: false
+    t.integer "personnel_id", null: false
+    t.index ["film_id", "personnel_id"], name: "index_films_personnels_on_film_id_and_personnel_id"
+    t.index ["personnel_id", "film_id"], name: "index_films_personnels_on_personnel_id_and_film_id"
+  end
 
   create_table "genre_series", id: false, force: :cascade do |t|
     t.integer "series_id", null: false
@@ -30,9 +37,38 @@ ActiveRecord::Schema.define(version: 2019_01_16_111106) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "language"
+    t.datetime "release_date"
+    t.integer "collection"
+    t.integer "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "personnels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "series", force: :cascade do |t|
     t.string "name"
     t.integer "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "theaters", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
