@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
-# Manages Role
+# Role class for personnel
 class Role < ApplicationRecord
+  validates :title, presence: true
 end

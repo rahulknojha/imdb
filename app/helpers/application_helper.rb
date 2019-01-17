@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Application
+# App helper
 module ApplicationHelper
 end
