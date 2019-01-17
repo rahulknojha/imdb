@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-<<<<<<< HEAD
 # TV shows class
 class Tv < ApplicationRecord
   has_many :reveiews, as: :reviewable

@@ -2,5 +2,5 @@
 
 # Role class for personnel
 class Role < ApplicationRecord
-	validates :title, presence: true
+  validates :title, presence: true
 end
