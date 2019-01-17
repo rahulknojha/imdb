@@ -2,6 +2,6 @@
 
 # User Class
 class User < ApplicationRecord
-  has_many :review
+  has_many :reviews
   validates :name, presence: true
 end
