@@ -1,0 +1,8 @@
+<h1>Movie#index</h1>
+<table border='5' cellpadding=20 cellspacing=2>
+<% @movies.each do |movie| %>
+	<th width=50><%= link_to movie.title, movie_url(movie) %><br></th>
+<% end %>
+</table>
+<br>
+<%= link_to '<button type="button">New Movie</button>'.html_safe, new_movie_url %>

@@ -1,0 +1,25 @@
+<%= form_for @movie do |m| %>  <!--url:{action: "create"}, html: {class: "form"} do |m| %> -->
+	<p>
+		<%= m.label(:title) %>
+		<%= m.text_field :title %>
+	</p>
+	<p>
+		<%= m.label(:language) %>
+		<%= m.text_field :language %>
+	</p>
+	<p>
+		<%= m.label(:release_date) %>
+		<%= m.text_field :release_date %>
+	</p>
+	<p>
+		<%= m.label(:collection) %>
+		<%= m.text_field :collection %>
+	</p>
+	<p>
+		<%= m.label(:budget) %>
+		<%= m.text_field :budget %>
+	</p>
+	<p>
+		<%= m.submit %>
+	</p>
+<% end %>

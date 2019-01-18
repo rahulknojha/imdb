@@ -1,0 +1,9 @@
+<h1>Movie#show</h1>
+
+<% @movie.attributes.each do |attribute| %>
+	<b><%= attribute[0] %></b> : <%= attribute[1] %> <br>
+<% end %>
+
+<%= link_to "Edit", edit_movie_path(@movie) %></td>
+<%= link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 
+				'Are you sure?'} %>
