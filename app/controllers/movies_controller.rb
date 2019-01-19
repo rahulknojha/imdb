@@ -12,15 +12,11 @@ class MoviesController < ApplicationController
   end
 
   def create
-    #if Movie.create!(movie_params)
-    @movie = Movie.new(movie_params)
-    @movie.poster.purge
-    @movie.poster.attach(params[:movie][:poster])
-    if @movie.save
+    Movie.create!(movie_params)
       redirect_to movies_path, notice: 'New Movie has been added successfully.'
-    else
-      render 'new', notice: 'Hmm.. somthing went wrong!'
-    end
+    #else
+    #  render 'new', notice: 'Hmm.. somthing went wrong!'
+    #end
   end
 
   def show

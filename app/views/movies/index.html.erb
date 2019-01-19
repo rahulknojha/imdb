@@ -1,21 +1,29 @@
 <h1>Movie#index</h1>
 <br>
 <div class=table-hover>
-<table class=table width="40%">
-	<tr>
-		<th>Sr No.</th>
-		<th>MOVIES</th>
-		<th>Release date</th>
-	</tr>
+	<table style='max-width: 1200px;' class=table max-width=400px>
+		<tr>
+			<th>Sr No.</th>
+			
+			<th>MOVIES</th>
+			<th>Release date</th>
+		</tr>
 
-<% @movies.each_with_index do |movie, index| %>
-  <tr class=success>
-  	<td><%= index+1 %></td>
-		<td><%= link_to movie.title, movie_url(movie) %></td>
-		<td><%= movie.release_date %></td>
-	</tr>
-<% end %>
-</table>
+	<% @movies.order(release_date: :desc).each_with_index do |movie, index| %>
+	  <tr class=success>
+	  	<td><br><%= index+1 %></td>
+			<td>
+				<% if movie.poster.attached? %>
+					<%= image_tag movie.poster, class: "img-responsive", width: 60, height: 80 %>
+				<% else %>
+			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
+				<% end %> &emsp;&emsp;
+				<%= link_to movie.title, movie_url(movie) %>
+			</td>
+			<td><br><%= movie.release_date %></td>
+		</tr>
+	<% end %>
+	</table>
 </div>
-<br>
-<%= link_to '<button type="button" class="btn-primary">New Movie</button>'.html_safe, new_movie_url%>
+<br><br><br>
+<%= link_to '<button type="button" class="btn-success">New Movie</button>'.html_safe, new_movie_url%>

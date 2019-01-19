@@ -1,4 +1,5 @@
-<h1>Movie#show</h1><br><br>
+<h2>Movie#show &emsp;<%= link_to '<button class=btn-default> Home </button>'.html_safe, movies_url %></h2>
+<br><br>
 <div class=container>
 	<div class=row>
 		<div class=col-sm-8>
@@ -14,7 +15,11 @@
 			<%= link_to '<button class=btn-danger> DELETE </button>'.html_safe, movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'} %>
 		</div>
 		<div class=col-sm-4>
-			<%= image_tag ('uri.jpg'), class: "img-responsive", width: 320, height: 375 %>
+			<% if @movie.poster.attached? %>
+				<%= image_tag @movie.poster, class: "img-responsive", width: 320, height: 375 %>
+			<% else %>
+			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
+			<% end %>
 		</div>
 	</div>
 </div>
