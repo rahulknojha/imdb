@@ -2,7 +2,7 @@
 
 require_relative 'boot'
 
-require 'active_storage/engine' #Kaiwalya
+require 'active_storage/engine' # Kaiwalya
 
 require 'rails/all'
 
