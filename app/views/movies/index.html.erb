@@ -1,12 +1,11 @@
 <h1>Movie#index</h1>
 <br>
 <div class=table-hover>
-	<table style='max-width: 1200px;' class=table max-width=400px>
+	<table style='max-width:1200px;' class=table border=2>
 		<tr>
-			<th>Sr No.</th>
-			
-			<th>MOVIES</th>
-			<th>Release date</th>
+			<th style="width: 10%">Sr No.</th>
+			<th style="width: 50%">MOVIES</th>
+			<th style="width: 40%">&nbsp;&nbsp;Release date</th>
 		</tr>
 
 	<% @movies.order(release_date: :desc).each_with_index do |movie, index| %>
@@ -16,11 +15,11 @@
 				<% if movie.poster.attached? %>
 					<%= image_tag movie.poster, class: "img-responsive", width: 60, height: 80 %>
 				<% else %>
-			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
+			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 60, height: 80 %>
 				<% end %> &emsp;&emsp;
 				<%= link_to movie.title, movie_url(movie) %>
 			</td>
-			<td><br><%= movie.release_date %></td>
+			<td><br><%= movie.release_date.strftime('%d  %B  %Y') %></td>
 		</tr>
 	<% end %>
 	</table>
