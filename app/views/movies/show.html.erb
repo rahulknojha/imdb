@@ -1,9 +1,20 @@
-<h1>Movie#show</h1>
-
-<% @movie.attributes.each do |attribute| %>
-	<b><%= attribute[0] %></b> : <%= attribute[1] %> <br>
-<% end %>
-
-<%= link_to "Edit", edit_movie_path(@movie) %></td>
-<%= link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 
-				'Are you sure?'} %>
+<h1>Movie#show</h1><br><br>
+<div class=container>
+	<div class=row>
+		<div class=col-sm-8>
+			<table class=table>
+				<% @movie.attributes.each do |attribute| %>
+					<tr>
+						<td><b><%= attribute[0].upcase %></b></td>
+						<td><%= attribute[1] %></td> 
+					<tr>
+				<% end %>
+			</table>
+			<br><br><%= link_to '<button class=btn-primary> EDIT </button>'.html_safe, edit_movie_path(@movie) %> &emsp;
+			<%= link_to '<button class=btn-danger> DELETE </button>'.html_safe, movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'} %>
+		</div>
+		<div class=col-sm-4>
+			<%= image_tag ('uri.jpg'), class: "img-responsive", width: 320, height: 375 %>
+		</div>
+	</div>
+</div>

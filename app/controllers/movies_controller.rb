@@ -12,7 +12,10 @@ class MoviesController < ApplicationController
   end
 
   def create
+    #if Movie.create!(movie_params)
     @movie = Movie.new(movie_params)
+    @movie.poster.purge
+    @movie.poster.attach(params[:movie][:poster])
     if @movie.save
       redirect_to movies_path, notice: 'New Movie has been added successfully.'
     else
@@ -49,6 +52,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :language, :release_date, :collection, :budget)
+    params.require(:movie).permit(:title, :language, :release_date, :collection, :budget, :poster)
   end
 end

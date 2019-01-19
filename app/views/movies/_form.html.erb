@@ -1,25 +1,73 @@
-<%= form_for @movie do |m| %>  <!--url:{action: "create"}, html: {class: "form"} do |m| %> -->
-	<p>
-		<%= m.label(:title) %>
-		<%= m.text_field :title %>
+<%= form_for @movie do |form| %>  <!--url:{action: "create"}, html: {class: "form"} do |m| %> -->
+  <div class=row>
+  	<div class=col-sm-1>
+			<%= form.label(:title) %>
+		</div>
+		<%= form.text_field :title %>
+	</div>
+	
+	<div class=row>
+	  <div class=col-sm-1>
+			<%= form.label(:language) %>
+		</div>
+		<%= form.text_field :language %>
+  </div>
+
+  <div class=row>	
+  	<div class=col-sm-1>
+			<%= form.label(:release_date) %>
+		</div>
+		<%= form.text_field :release_date %>
+  </div>
+
+  <div class=row>
+  	<div class=col-sm-1>
+			<%= form.label(:collection) %>
+		</div>
+		<%= form.text_field :collection %>
+  </div>
+  
+  <div class=row>
+  	<div class=col-sm-1>
+			<%= form.label(:budget) %>
+		</div>
+		<%= form.text_field :budget %>
+	</div>
+	
+  <div class=row>
+  	<div class=col-sm-1>
+  		<%= form.label(:poster) %>
+		</div>
+		<%= form.file_field :poster %>
+	</div>
+
+	<br><br><%= form.submit %>
+
+<!--	<p>
+		<%= form.label(:title) %>
+		<%= form.text_field :title %>
 	</p>
 	<p>
-		<%= m.label(:language) %>
-		<%= m.text_field :language %>
+		<%= form.label(:language) %>
+		<%= form.text_field :language %>
 	</p>
 	<p>
-		<%= m.label(:release_date) %>
-		<%= m.text_field :release_date %>
+		<%= form.label(:release_date) %>
+		<%= form.text_field :release_date %>
 	</p>
 	<p>
-		<%= m.label(:collection) %>
-		<%= m.text_field :collection %>
+		<%= form.label(:collection) %>
+		<%= form.text_field :collection %>
 	</p>
 	<p>
-		<%= m.label(:budget) %>
-		<%= m.text_field :budget %>
+		<%= form.label(:budget) %>
+		<%= form.text_field :budget %>
+	</p>
+	</p>
+		<%= form.label(:poster) %>
+		<%= form.file_field :poster %>
 	</p>
 	<p>
-		<%= m.submit %>
-	</p>
+		<%= form.submit %>
+	</p>-->
 <% end %>

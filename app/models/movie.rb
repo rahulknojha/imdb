@@ -11,4 +11,5 @@ class Movie < ApplicationRecord
   validates :budget, presence: true
   has_many :genres, as: :genreable
   has_many :awards, as: :awardable
+  has_one_attached :poster
 end
