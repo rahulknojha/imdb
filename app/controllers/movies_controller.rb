@@ -13,15 +13,13 @@ class MoviesController < ApplicationController
   end
 
   def create
-    begin
-      if Movie.create!(movie_params)
-        redirect_to movies_path, notice: 'New Movie has been added successfully.'
-      else
-        render 'new', notice: 'Hmm.. somthing went wrong!'
-      end
-    rescue ActiveRecord::RecordInvalid => exception
-      redirect_to new_movie_path, alert: exception.message
+    if Movie.create!(movie_params)
+      redirect_to movies_path, notice: 'New Movie has been added successfully.'
+    else
+      render 'new', notice: 'Hmm.. somthing went wrong!'
     end
+  rescue ActiveRecord::RecordInvalid => exception
+    redirect_to new_movie_path, alert: exception.message
   end
 
   def show; end
