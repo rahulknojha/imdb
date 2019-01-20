@@ -3,6 +3,7 @@
 # Movie controller
 class MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
+
   def index
     @movies = Movie.all
   end
@@ -12,17 +13,16 @@ class MoviesController < ApplicationController
   end
 
   def create
-    Movie.create!(movie_params)
-    redirect_to movies_path, notice: 'New Movie has been added successfully.'
-    # else
-    #  render 'new', notice: 'Hmm.. somthing went wrong!'
-    # end
+    if Movie.create!(movie_params)
+      redirect_to movies_path, notice: 'New Movie has been added successfully.'
+    else
+      render 'new', notice: 'Hmm.. somthing went wrong!'
+    end
+  rescue ActiveRecord::RecordInvalid => exception
+    redirect_to new_movie_path, alert: exception.message
   end
 
-  def show
-    # Device gem for login
-    # Active storage gem for Upload image
-  end
+  def show; end
 
   def edit
     @movie = Movie.find(params[:id])
@@ -34,15 +34,26 @@ class MoviesController < ApplicationController
     else
       render 'edit'
     end
+  rescue ActiveRecord::RecordInvalid => exception
+    redirect_to edit_movie_path, alert: exception.message
+  rescue ActiveRecord::RecordNotFound => exception
+    redirect_to movie_path, alert: exception.message
   end
 
   def find_movie
     @movie = Movie.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => exception
+    redirect_to movie_path, alert: exception.message
   end
 
   def destroy
-    @movie.destroy
-    redirect_to movies_path
+    if @movie.destroy
+      redirect_to movies_path
+    else
+      redirect_to edit_movie_path, notice: 'Could not delete the record!'
+    end
+  rescue ActiveRecord::RecordNotFound => exception
+    redirect_to movie_path, alert: exception.message
   end
 
   private

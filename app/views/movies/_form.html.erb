@@ -1,73 +1,47 @@
-<%= form_for @movie do |form| %>  <!--url:{action: "create"}, html: {class: "form"} do |m| %> -->
-  <div class=row>
-  	<div class=col-sm-1>
-			<%= form.label(:title) %>
+<br><br>
+<%= form_for @movie do |form| %>
+  <div align=left>
+	  <div class=row style='padding: 20px;'>
+	  	<div class=col-sm-2>
+				<%= form.label(:title) %>
+			</div>
+			<%= form.text_field :title %>
 		</div>
-		<%= form.text_field :title %>
+		
+		<div class=row style='padding: 20px;'>
+		  <div class=col-sm-2>
+				<%= form.label(:language) %>
+			</div>
+			<%= form.text_field :language %>
+	  </div>
+
+	  <div class=row style='padding: 20px;'>	
+	  	<div class=col-sm-2>
+	  		<%= form.label(:release_date) %>
+			</div>
+				<%=form.text_field :release_date %>
+	  </div>
+
+	  <div class=row style='padding: 20px;'>
+	  	<div class=col-sm-2>
+				<%= form.label(:collection) %>
+			</div>
+			<%= form.text_field :collection %>
+	  </div>
+	  
+	  <div class=row style='padding: 20px;'>
+	  	<div class=col-sm-2>
+				<%= form.label(:budget) %>
+			</div>
+			<%= form.text_field :budget %>
+		</div>
+		
+	  <div class=row style='padding: 20px;'>
+	  	<div class=col-sm-2>
+	  		<%= form.label(:poster) %>
+			</div>
+			<%= form.file_field :poster %>
+		</div>
 	</div>
-	
-	<div class=row>
-	  <div class=col-sm-1>
-			<%= form.label(:language) %>
-		</div>
-		<%= form.text_field :language %>
-  </div>
-
-  <div class=row>	
-  	<div class=col-sm-1>
-  		<%= form.label(:release_date) %>
-		</div>
-			<%=form.text_field :release_date %>
-  </div>
-
-  <div class=row>
-  	<div class=col-sm-1>
-			<%= form.label(:collection) %>
-		</div>
-		<%= form.text_field :collection %>
-  </div>
-  
-  <div class=row>
-  	<div class=col-sm-1>
-			<%= form.label(:budget) %>
-		</div>
-		<%= form.text_field :budget %>
-	</div>
-	
-  <div class=row>
-  	<div class=col-sm-1>
-  		<%= form.label(:poster) %>
-		</div>
-		<%= form.file_field :poster %>
-	</div>
-
-	<br><br><%= form.submit %>
-
-<!--	<p>
-		<%= form.label(:title) %>
-		<%= form.text_field :title %>
-	</p>
-	<p>
-		<%= form.label(:language) %>
-		<%= form.text_field :language %>
-	</p>
-	<p>
-		<%= form.label(:release_date) %>
-		<%= form.text_field :release_date %>
-	</p>
-	<p>
-		<%= form.label(:collection) %>
-		<%= form.text_field :collection %>
-	</p>
-	<p>
-		<%= form.label(:budget) %>
-		<%= form.text_field :budget %>
-	</p>
-	</p>
-		<%= form.label(:poster) %>
-		<%= form.file_field :poster %>
-	</p>
-	<p>
-		<%= form.submit %>
-	</p>-->
+	<br><br><div class=row><div class=col-sm-1><%= %></div><%= form.submit %></div>
 <% end %>
