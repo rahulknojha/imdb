@@ -8,4 +8,5 @@ class Genre < ApplicationRecord
   #    'Music', 'Musical', 'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport', 'Superhero', 'Talk Show',
   #    'Thriller', 'War', 'Western'] }
   belongs_to :genreable, polymorphic: true
+
 end
