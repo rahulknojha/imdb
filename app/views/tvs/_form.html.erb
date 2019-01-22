@@ -1,12 +1,12 @@
 <%= form_for @tv do |form| %>
   <div align=left>
 	  <div class=row style='padding: 20px;'>
-		<div class=col-sm-2>
+		  <div class=col-sm-2>
 				<%= form.label(:title) %>
-			</div>
-			<%= form.text_field :title %>
+		  </div>
+			<%= form.text_field :title %><div style=' padding-left: 450px;'><%= @tv.errors.messages[:title].to_sentence %></div>
 		</div>
-		
+
 		<div class=row style='padding: 20px;'>
 		  <div class=col-sm-2>
 				<%= form.label(:language) %>
@@ -15,11 +15,29 @@
 	  </div>
 
 	  <div class=row style='padding: 20px;'>	
-		<div class=col-sm-2>
-			<%= form.label(:premier_date) %>
+		  <div class=col-sm-2>
+			  <%= form.label(:premier_date) %>
 			</div>
-				<%=form.text_field :premire_date %>
+			<%=form.date_field :premire_date %><div style=' padding-left: 450px;'><%= @tv.errors.messages[:premire_date].to_sentence %></div>
 	  </div>
 
-	</div><div class=row style='padding-left: 20px;'><div class=col-sm-1><%= %></div><%= form.submit%></div>
+	  <div class=row style='padding: 20px;'>
+	    <div class=col-sm-2>	
+	      <%= form.label(:episode) %>
+	    </div>
+	  <%=form.text_field :episode %><div style=' padding-left: 450px;'><%= @tv.errors.messages[:episode].to_sentence %></div>
+	  </div>
+
+	  <div class=row style='padding: 20px;'>
+	    <div class=col-sm-2>	
+	      <%= form.label(:duration) %>
+	    </div>
+	  <%=form.text_field :duration %><div style=' padding-left: 450px;'><%= @tv.errors.messages[:duration].to_sentence %></div>	  </div>
+
+	</div>
+	  <div class=row style='padding-left: 20px;'>
+	    <div class=col-sm-1>	
+	    </div>
+	  <%= form.submit%>
+	  </div>
 <% end %>
