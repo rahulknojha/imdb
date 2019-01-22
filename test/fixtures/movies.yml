@@ -4,8 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: {title: 'Fixture', language: 'Hindi', release_date: '2018-10-10'}
 # column: value
 #
-two: {}
+two: {title: 'Fixture2', language: 'Hindi', release_date: '2017-12-13'}
 # column: value

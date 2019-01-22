@@ -13,13 +13,14 @@ class MoviesController < ApplicationController
   end
 
   def create
-    if Movie.create!(movie_params)
+    @movie = Movie.new(movie_params)
+    if @movie.save
       redirect_to movies_path, notice: 'New Movie has been added successfully.'
     else
-      render 'new', notice: 'Hmm.. somthing went wrong!'
+      flash[:message] = @movie.errors.messages
+      flash[:errors] = @movie.errors.details
+      render 'new', notice: 'Hmm.. Somthing went wrong!'
     end
-  rescue ActiveRecord::RecordInvalid => exception
-    redirect_to new_movie_path, alert: exception.message
   end
 
   def show; end
@@ -32,18 +33,14 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie
     else
-      render 'edit'
+      render 'edit', notice: 'All fields are mandatory in Appropriate Format!'
     end
-  rescue ActiveRecord::RecordInvalid => exception
-    redirect_to edit_movie_path, alert: exception.message
-  rescue ActiveRecord::RecordNotFound => exception
-    redirect_to movie_path, alert: exception.message
   end
 
   def find_movie
     @movie = Movie.find(params[:id])
   rescue ActiveRecord::RecordNotFound => exception
-    redirect_to movie_path, alert: exception.message
+    redirect_to movies_path, alert: exception.message
   end
 
   def destroy

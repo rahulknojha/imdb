@@ -9,7 +9,7 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use Puma as the app server
+# Use Puma as the app serve00r
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -18,7 +18,11 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs
 # readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
+gem 'bootstrap', '~> 4.2.1'
+# for bootstrap support
+gem 'sprockets-rails', require: 'sprockets/railtie'
+# Add Jquery functionalities using jquery-rails gem
+gem 'jquery-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster.
@@ -51,8 +55,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'bootstrap', '~> 4.2.1'
-  gem 'jquery-rails'
   gem 'rubocop', '~> 0.63.0', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -64,6 +66,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # To clean test database once exited
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

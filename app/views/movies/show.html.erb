@@ -7,7 +7,11 @@
 				<% @movie.attributes.each do |attribute| %>
 					<tr>
 						<td><b><%= attribute[0].upcase %></b></td>
-						<td><%= attribute[1] %></td> 
+						<% if attribute[0] == 'release_date' %>
+							<td><%= attribute[1].strftime('%d  %B  %Y') %></td>
+						<% else %>	
+							<td><%= attribute[1] %></td> 
+						<% end %>
 					<tr>
 				<% end %>
 			</table>
@@ -17,6 +21,7 @@
 		<div class=col-sm-4>
 			<% if @movie.poster.attached? %>
 				<%= image_tag @movie.poster, class: "img-responsive", width: 320, height: 375 %>
+				<br><!--<%= url_for(@movie.poster) %>-->
 			<% else %>
 			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
 			<% end %>
