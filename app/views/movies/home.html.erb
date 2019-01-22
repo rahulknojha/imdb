@@ -1,0 +1,9 @@
+<h1>Movie#home</h1><br><br>
+
+<% if current_movie_admin %>
+	<%= link_to 'Sign Out', destroy_movie_admin_session_path %>
+<% else %>
+	&emsp;&emsp;
+	<%= link_to '<button class=btn-success> Sign Up </button>'.html_safe, new_movie_admin_registration_path %>&emsp;
+	<%= link_to '<button class=btn-primary> Sign In </button>'.html_safe, new_movie_admin_session_path %>
+<% end %>

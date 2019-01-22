@@ -1,0 +1,30 @@
+<h2>Movie#show &emsp;<%= link_to '<button class=btn-default> Home </button>'.html_safe, movies_url %></h2>
+<br><br>
+<div class=container>
+	<div class=row>
+		<div class=col-sm-8>
+			<table class=table>
+				<% @movie.attributes.each do |attribute| %>
+					<tr>
+						<td><b><%= attribute[0].upcase %></b></td>
+						<% if attribute[0] == 'release_date' %>
+							<td><%= attribute[1].strftime('%d  %B  %Y') %></td>
+						<% else %>	
+							<td><%= attribute[1] %></td> 
+						<% end %>
+					<tr>
+				<% end %>
+			</table>
+			<br><br><%= link_to '<button class=btn-primary> EDIT </button>'.html_safe, edit_movie_path(@movie) %> &emsp;
+			<%= link_to '<button class=btn-danger> DELETE </button>'.html_safe, movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'} %>
+		</div>
+		<div class=col-sm-4>
+			<% if @movie.poster.attached? %>
+				<%= image_tag @movie.poster, class: "img-responsive", width: 320, height: 375 %>
+				<br><!--<%= url_for(@movie.poster) %>-->
+			<% else %>
+			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
+			<% end %>
+		</div>
+	</div>
+</div>
