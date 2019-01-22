@@ -1,0 +1,20 @@
+
+<h2>Tv#show</h2>
+<div class=container>
+	<div class=row>
+		<div class=col-sm-8>
+			<table class=table>
+					<tr>
+						<td><b><%= @tv.title %></b></td><br>&nbsp;&nbsp;
+						<td><%= @tv.language %></td>
+						<td><%= @tv.premire_date %></td> 
+						<td><%= @tv.duration %></td> 
+						<td><%= @tv.episode %></td> 
+					<tr>
+			</table>
+			<br><br><%= link_to '<button class=btn-primary> EDIT </button>'.html_safe, edit_tv_path(@tv) %>
+			<%= link_to '<button class=btn-danger> DELETE </button>'.html_safe, tv_path(@tv), method: :delete, data:{confirm: 'Hey!!!!
+				Are you sure?'} %>
+		</div>
+	</div>
+	<h2><%= link_to '<button class=btn-default> Home </button>'.html_safe, tvs_url %></h2>
