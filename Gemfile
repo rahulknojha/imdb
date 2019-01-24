@@ -10,7 +10,6 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'devise'
 gem 'devise-bootstrapped'
-gem 'jquery-rails'
 gem 'mini_racer'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record

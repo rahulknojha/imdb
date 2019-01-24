@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    #@all_review = Review.all
+    # @all_review = Review.all
     @movie = Movie.find(params[:id])
     @review = Review.new
   end

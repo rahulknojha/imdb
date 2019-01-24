@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#Tv_Routes
+# Tv_Routes
 Rails.application.routes.draw do
   resources :movies
   devise_for :users
@@ -8,4 +8,3 @@ Rails.application.routes.draw do
   resources :tvs
   resources :reviews
 end
-
