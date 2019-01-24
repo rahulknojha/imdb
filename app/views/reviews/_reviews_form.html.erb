@@ -1,19 +1,18 @@
-<h3><b>Add review :</b></h3>
 
-<%= form_for @review do |form| %>
+<%= form_with model: review do |form| %>
 <div align=left>
 	  <div class=row>
 	  	<div class=col-sm-4>
 				<%= form.label(:Rating) %>
 			</div>
-			<%= form.text_field :rating %>&emsp;<%= @review.errors.messages[:rating].to_sentence %>
+			<%= form.text_field :rating %>&emsp;<%# @review.errors.messages[:rating].to_sentence %>
 		</div>
 		
 		<div class=row>
 		  <div class=col-sm-4>
 				<%= form.label(:review) %>
 			</div>
-			<%= form.text_field :review %>&emsp;<%= @review.errors.messages[:review].to_sentence %>
+			<%= form.text_field :review %>&emsp;<%# @review.errors.messages[:review].to_sentence %>
 	  </div>
 
 	  <%= form.hidden_field :reviewable_id, :value => @movie.id %>
