@@ -12,7 +12,6 @@ class Movie < ApplicationRecord
   has_many :genres, as: :genreable
   has_many :awards, as: :awardable
   has_one_attached :poster
-  # ^[0-9]*$
   # validates :poster, content_type: ["image/png", "image/jpeg"]
   validate :poster_format
 

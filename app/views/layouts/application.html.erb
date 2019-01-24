@@ -8,8 +8,16 @@
     <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'layouts/navbar' %>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <!--<div class='bg-img'></div>-->
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/navbar1' %>
+      <% if notice %>
+      <div class="alert alert-success"><% notice %>
+      </div>
+      <% end %> 
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
   </body>
 </html>

@@ -2,6 +2,7 @@
 
 # Movie controller
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_movie, only: %i[show edit update destroy]
 
   def index
@@ -23,7 +24,11 @@ class MoviesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    #@all_review = Review.all
+    @movie = Movie.find(params[:id])
+    @review = Review.new
+  end
 
   def edit
     @movie = Movie.find(params[:id])

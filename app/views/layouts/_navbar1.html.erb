@@ -1,0 +1,40 @@
+<!-- nav -->
+<nav>
+      <div class="nav-fostrap">
+        <ul>
+          <li><a href=<%= user_session_path %>>IMDB</a></li>
+          <li><a href="javascript:void(0)">Movies<span class="arrow-down"></span></a>
+            <ul class="dropdown">
+              <li><a href="/movies/index">All Movies</a></li>
+              <li><a href="">Year 2019</a></li>
+              <li><a href="">Year 2018</a></li>
+              <li><a href="">Top Rated</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:void(0)" >TV Shows<span class="arrow-down"></span></a>
+            <ul class="dropdown">
+              <li><a href="/tvs/index">Year 2019</a></li>
+              <li><a href="">Year 2018</a></li>
+              <li><a href="">Top Rated</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:void(0)" >Amazon Originals<span class="arrow-down"></span></a>
+            <ul class="dropdown">
+              <li><a href="">Tools</a></li>
+              <li><a href="">Backlink</a></li>
+            </ul>
+          </li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>  
+          <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="nav-bg-fostrap">
+        <div class="navbar-fostrap"> <span></span> <span></span> <span></span> </div>
+        <a href="" class="title-mobile">Fostrap</a>
+      </div>
+</nav>
+<!-- //nav -->
