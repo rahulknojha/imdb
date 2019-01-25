@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-#Tv_Routes
+# Tv_Routes
 Rails.application.routes.draw do
   resources :movies
   devise_for :users
-  root to: 'tvs#index'
+  root to: 'movies#index'
   resources :tvs
+  resources :reviews
 end
-

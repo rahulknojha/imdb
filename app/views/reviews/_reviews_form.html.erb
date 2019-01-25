@@ -1,0 +1,9 @@
+<%= simple_form_for review do |form| %>
+	
+	<%= form.input :rating, collection: 1..5, required: true %>&emsp;<%# @review.errors.messages[:rating].to_sentence %>
+	<%= form.input :review, required: true %>&emsp;<%# @review.errors.messages[:review].to_sentence %>
+	<%= form.hidden_field :reviewable_id, :value => @movie.id %>
+	<%= form.hidden_field :reviewable_type, :value => @movie.class %>	
+	<%= form.submit %>
+
+<% end %>

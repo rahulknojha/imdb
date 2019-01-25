@@ -52,5 +52,4 @@ class TvsController < ApplicationController
   def find_tv
     @tv = Tv.find(params[:id])
   end
-
 end

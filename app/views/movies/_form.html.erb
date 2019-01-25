@@ -1,56 +1,22 @@
-<br><br>
-<%= form_for @movie do |form| %>
-	<!--<% @movie.errors.messages.each do |key, value| %>
-		<%= key %> : <%= value.to_sentence %><br>
-  <% end %><br>-->
-  <div align=left>
-	  <div class=row>
-	  	<div class=col-sm-2>
-				<%= form.label(:title) %>
-			</div>
-			<%= form.text_field :title %>&emsp;<%= @movie.errors.messages[:title].to_sentence %>
-		</div>
-		
-		<div class=row>
-		  <div class=col-sm-2>
-				<%= form.label(:language) %>
-			</div>
-			<%= form.text_field :language %>&emsp;<%= @movie.errors.messages[:language].to_sentence %>
-	  </div>
+<div class=container>
+	<%= simple_form_for @movie do |form| %>
 
-	  <div class=row>	
-	  	<div class=col-sm-2>
-	  		<%= form.label(:release_date) %>
-			</div>
-				<%=form.date_field :release_date %>&emsp;<%= @movie.errors.messages[:release_date].to_sentence %>
-	  </div>
+		<%= form.input :title, required: true %>
 
-	  <div class=row>
-	  	<div class=col-sm-2>
-				<%= form.label(:collection) %>
-			</div>
-			<%= form.text_field :collection %>&emsp;<%= @movie.errors.messages[:collection].to_sentence %>
-	  </div>
-	  
-	  <div class=row>
-	  	<div class=col-sm-2>
-				<%= form.label(:budget) %>
-			</div>
-			<%= form.text_field :budget %>&emsp;<%= @movie.errors.messages[:budget].to_sentence %>
-		</div>
-		
-	  <div class=row>
-	  	<div class=col-sm-2>
-	  		<%= form.label(:poster) %>
-			</div>
-			<%= form.file_field :poster %>&emsp;<%= @movie.errors.messages[:poster].to_sentence %>
-	  	<div class=col-sm-2>
-				<% if @movie.poster.attached? %>
-					<%= image_tag @movie.poster, class: "img-responsive", width: 100, height: 150 %>
-				<% end %>
-			</div>
-		</div>
+		<%= form.input :language, required: true %>
 
-	</div>
-	<br><br><div class=row><div class=col-sm-1><%= %></div><%= form.submit %></div>
-<% end %>
+		<%=form.input :release_date, as: :date, html5: true, required: true %>
+
+	 	<%= form.input :collection, :input_html => { :type => "number" }, required: true %>
+
+	 	<%= form.input :budget, :input_html => { :type => "number" }, required: true %>
+
+	 	<%= form.input :poster, as: :file %>
+
+		<% if @movie.poster.attached? %>
+			<%= image_tag @movie.poster, class: "img-responsive", width: 100, height: 150 %>
+		<% end %>
+
+		<%= form.submit %>
+	<% end %>
+</div>

@@ -7,10 +7,9 @@ ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'simple_form'
 gem 'devise'
 gem 'devise-bootstrapped'
-gem 'jquery-rails'
 gem 'mini_racer'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record

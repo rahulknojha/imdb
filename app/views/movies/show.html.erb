@@ -1,4 +1,7 @@
-<h2>Movie#show &emsp;<%= link_to '<button class=btn-default> Home </button>'.html_safe, movies_url %></h2>
+<br>
+<font size=5>
+	<%= link_to 'Home', movies_url %>  /  <%= link_to 'Movie', movies_url %>  /  Show
+</font>
 <br><br>
 <div class=container>
 	<div class=row>
@@ -6,25 +9,71 @@
 			<table class=table>
 				<% @movie.attributes.each do |attribute| %>
 					<tr>
-						<td><b><%= attribute[0].upcase %></b></td>
-						<% if attribute[0] == 'release_date' %>
-							<td><%= attribute[1].strftime('%d  %B  %Y') %></td>
-						<% else %>	
-							<td><%= attribute[1] %></td> 
-						<% end %>
+						<% unless ((attribute.first == 'created_at') or (attribute.first == 'updated_at')) %>
+							<td><b><%= attribute.first.upcase %></b></td>
+							<% if attribute.first == 'release_date' %>
+								<td><%= attribute.last.strftime('%d  %B  %Y') %></td>
+							<% else %>	
+								<td><%= attribute.last %></td> 
+							<% end %>
+						<%end%>
 					<tr>
 				<% end %>
 			</table>
-			<br><br><%= link_to '<button class=btn-primary> EDIT </button>'.html_safe, edit_movie_path(@movie) %> &emsp;
-			<%= link_to '<button class=btn-danger> DELETE </button>'.html_safe, movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'} %>
+			<br><br><%= link_to '<button type=button class="btn btn-primary btn-lg"> EDIT </button>'.html_safe, edit_movie_path(@movie) %> &emsp;
+			<%= link_to '<button class="btn btn-danger btn-lg"> DELETE </button>'.html_safe, movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'} %>
 		</div>
 		<div class=col-sm-4>
 			<% if @movie.poster.attached? %>
-				<%= image_tag @movie.poster, class: "img-responsive", width: 320, height: 375 %>
-				<br><!--<%= url_for(@movie.poster) %>-->
+				<%= image_tag @movie.poster, width: 320, height: 330 %>
+				<br>
 			<% else %>
-			    <%= image_tag ('default.jpg'), class: "img-responsive", width: 320, height: 375 %>
+			    <%= image_tag ('default.jpg'), width: 320, height: 330 %>
+			<% end %>
+		</div>
+	</div><br><br><br>
+
+	<div id='edit_modal'></div>
+	<div id='new_modal'></div>
+
+	<!-- REVIEW SECTION -->
+	<div class=row>
+		<div class=col-sm-8>
+			<% if @movie.reviews %>
+				<table class=table border=2>
+					<tr>
+						<th>USER</th>
+						<th>REVIEW</th>
+						<th>RATING</th>
+						<th>EDIT</th>
+						<th>DELETE</th>
+					</tr>
+					<% @movie.reviews.each do |review| %>
+						<tr align=center>
+						  <td><b><%= User.find(review.user_id).email %></b></td>
+							<td><%= review.review %></td>
+							<td><%= review.rating %></td>
+							<% if current_user.id == review.user_id %>
+								<td>
+									<%= link_to '<font size=4><i class="fa fa-edit"></i></font>'.html_safe, edit_review_path(review), class: "btn", remote: true, "data-toggle": "modal", "data-target": "my-modal" %>
+								</td>
+								<td>
+									<%= link_to '<font size=4 color=red><i class="fa fa-trash"></i></font>'.html_safe, review_path(review), method: :delete, data:{confirm: 'Are you sure?'} %>
+								</td>
+							<% else %>
+							  <td></td><td></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</table>
+			<% end %><br>
+		</div>
+		<div class=col-sm-4>
+			<% if @movie.reviews.where(user_id: current_user.id).empty? %>
+				<%= link_to '<button class=\'btn btn-success btn-lg\'> + &emsp;Add Review</button>'.html_safe, new_review_path(movie_id: @movie.id), class: "btn", remote: true, "data-toggle": "modal", "data-target": "my-modal" %><br><br>
 			<% end %>
 		</div>
 	</div>
+	<!-- REVIEW OVER -->
+
 </div>

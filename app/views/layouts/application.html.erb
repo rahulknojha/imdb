@@ -6,10 +6,19 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application',media: 'all','data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <%= render 'layouts/navbar' %>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <!--<div class='bg-img'></div>-->
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/navbar1' %>
+      <% if notice %>
+      <div class="alert alert-success"><% notice %>
+      </div>
+      <% end %> 
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
   </body>
 </html>
