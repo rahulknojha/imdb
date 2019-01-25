@@ -9,7 +9,11 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    if current_user.id == Review.find(params[:id]).user_id
+      @review = Review.find(params[:id])
+    else
+      redirect_to movie_path @movie, notice: 'Invalid move!' 
+    end
     # @movie = @review.reviewable_type.constantize.find(@review.reviewable_id)
     # render movie_path@movie
   end
@@ -24,12 +28,11 @@ class ReviewsController < ApplicationController
     else
       flash[:message] = @review.errors.messages
       flash[:errors] = @review.errors.details
-      render movie_path, notice: 'Hmm.. Somthing went wrong!'
+      redirect_to movie_path @movie, notice: 'Invalid move!'
     end
   end
 
   def update
-    # @movie = @review.reviewable_type.constantize.find(@review.reviewable_id)
     if @review.update!(review_params)
       redirect_to movie_path(@movie)
     else
@@ -38,10 +41,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    if @review.destroy
-      redirect_to movie_path@movie
+    if current_user.id == Review.find(params[:id]).user_id
+      if @review.destroy
+        redirect_to movie_path@movie
+      else
+        redirect_to movie_path@movie, notice: 'Could not delete the review!'
+      end
     else
-      redirect_to movie_path@movie, notice: 'Could not delete the review!'
+      redirect_to movie_path @movie, notice: 'Invalid move!'
     end
   rescue ActiveRecord::RecordNotFound => exception
     redirect_to movie_path, alert: exception.message

@@ -1,23 +1,9 @@
+<%= simple_form_for review do |form| %>
+	
+	<%= form.input :rating, collection: 1..5, required: true %>&emsp;<%# @review.errors.messages[:rating].to_sentence %>
+	<%= form.input :review, required: true %>&emsp;<%# @review.errors.messages[:review].to_sentence %>
+	<%= form.hidden_field :reviewable_id, :value => @movie.id %>
+	<%= form.hidden_field :reviewable_type, :value => @movie.class %>	
+	<%= form.submit %>
 
-<%= form_with model: review do |form| %>
-<div align=left>
-	  <div class=row>
-	  	<div class=col-sm-4>
-				<%= form.label(:Rating) %>
-			</div>
-			<%= form.text_field :rating %>&emsp;<%# @review.errors.messages[:rating].to_sentence %>
-		</div>
-		
-		<div class=row>
-		  <div class=col-sm-4>
-				<%= form.label(:review) %>
-			</div>
-			<%= form.text_field :review %>&emsp;<%# @review.errors.messages[:review].to_sentence %>
-	  </div>
-
-	  <%= form.hidden_field :reviewable_id, :value => @movie.id %>
-	  <%= form.hidden_field :reviewable_type, :value => @movie.class %>
-		
-	</div>
-	<br><div class=row><div class=col-sm-1><%= %></div><%= form.submit %></div>
 <% end %>

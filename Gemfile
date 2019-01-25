@@ -7,7 +7,7 @@ ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'simple_form'
 gem 'devise'
 gem 'devise-bootstrapped'
 gem 'mini_racer'
